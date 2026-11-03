@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><title>tradeterm — PAPER</title>
+<style>body{font:14px system-ui;background:#0d1117;color:#c9d1d9;margin:20px}h1{font-size:20px}.b{color:#f85149;font-weight:bold}
+.g{display:flex;gap:12px;flex-wrap:wrap}.c{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:10px 14px}.c b{display:block;font-size:20px}
+table{border-collapse:collapse;width:100%;font-size:12px}td,th{border-bottom:1px solid #30363d;padding:4px;text-align:left}pre{white-space:pre-wrap;font-size:11px}.pos{color:#3fb950}.neg{color:#f85149}</style></head>
+<body><h1>tradeterm <span class="b">PAPER TRADING ONLY — no real money</span></h1><div id="gen"></div>
+<div class="g" id="cards"></div><h3>Equity curve</h3><canvas id="eq" width="1000" height="220" style="width:100%;background:#161b22"></canvas>
+<h3>Open positions</h3><table id="pos"></table><h3>Trade log</h3><table id="tr"></table>
+<h3>Backtest (7d, 5m candles)</h3><pre id="bt"></pre><h3>Latest decisions</h3><table id="dec"></table><h3>Rules</h3><pre id="rules"></pre>
+<script>
+const f=(x,d=4)=>x==null?'–':(+x).toFixed(d),t=s=>new Date(s*1000).toLocaleString();
+fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{const s=d.stats;
+gen.textContent='Snapshot: '+t(d.generated);
+cards.innerHTML=[['Cash',f(d.cash)],['Equity',f(d.equity)],['Start',f(d.starting_balance,2)],['Closed trades',s.closed_trades],['Win rate',s.win_rate==null?'–':f(s.win_rate,1)+'%'],['Fees paid',f(s.fees_paid)],['Gross P&L',f(s.gross_pnl)],['Net P&L',f(s.net_pnl)]].map(([k,v])=>`<div class=c>${k}<b>${v}</b></div>`).join('');
+const e=d.equity_curve,c=eq.getContext('2d');if(e.length>1){let v=e.map(x=>x[1]),mn=Math.min(...v,d.starting_balance)-.01,mx=Math.max(...v,d.starting_balance)+.01,W=eq.width,H=eq.height,y=q=>H-(q-mn)/(mx-mn)*(H-20)-10;
+c.strokeStyle='#555';c.beginPath();c.moveTo(0,y(d.starting_balance));c.lineTo(W,y(d.starting_balance));c.stroke();c.strokeStyle='#58a6ff';c.beginPath();v.forEach((q,i)=>c[i?'lineTo':'moveTo'](i/(v.length-1)*W,y(q)));c.stroke();c.fillStyle='#8b949e';c.fillText(f(mx,3),4,12);c.fillText(f(mn,3),4,H-4)}
+pos.innerHTML='<tr><th>Pair</th><th>Opened</th><th>Entry</th><th>Qty</th><th>USD</th><th>TP</th><th>SL</th><th>Mark</th></tr>'+d.positions.map(p=>`<tr><td>${p.pair}</td><td>${t(p.opened)}</td><td>${f(p.px,6)}</td><td>${f(p.qty,8)}</td><td>${f(p.usd)}</td><td>${f(p.tp,6)}</td><td>${f(p.sl,6)}</td><td>${f(p.mark,6)}</td></tr>`).join('');
+tr.innerHTML='<tr><th>Time</th><th>Pair</th><th>Side</th><th>Price</th><th>USD</th><th>Fee</th><th>Net</th><th>Reason</th></tr>'+d.trades.map(x=>`<tr><td>${t(x.ts)}</td><td>${x.pair}</td><td>${x.side}</td><td>${f(x.px,6)}</td><td>${f(x.usd)}</td><td>${f(x.fee)}</td><td class=${x.net>0?'pos':'neg'}>${x.net==null?'':f(x.net)}</td><td>${x.reason}</td></tr>`).join('');
+dec.innerHTML=d.decisions.map(x=>`<tr><td>${t(x.ts)}</td><td>${x.pair}</td><td>${x.action}</td><td>${x.reason}</td></tr>`).join('');
+bt.textContent=d.backtest?Object.entries(d.backtest).map(([k,v])=>k+': '+JSON.stringify(v.TOTAL)).join('\n')+'\n(each pair backtested as its own $20 account; totals summed across 4 accounts)':'none';
+rules.textContent=JSON.stringify(d.rules,null,1)})</script></body></html>

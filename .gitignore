@@ -1,0 +1,6 @@
+tradeterm.db*
+.pages/
+daemon.log
+tradeterm.pid
+web/data.json
+__pycache__/

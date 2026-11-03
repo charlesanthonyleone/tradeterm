@@ -1,0 +1,26 @@
+{
+  "starting_balance_usd": 20.0,
+  "pairs": ["BTC-USD", "ETH-USD", "SOL-USD", "DOGE-USD"],
+  "granularity_sec": 300,
+  "fees": {"taker_pct": 0.6, "maker_pct": 0.4, "entry_type": "taker", "exit_type": "taker"},
+  "slippage_pct": 0.05,
+  "min_order_usd": 1.0,
+  "strategy": {
+    "name": "ema_cross_rsi_v1",
+    "ema_fast": 9, "ema_slow": 21,
+    "rsi_period": 14, "rsi_min": 50, "rsi_max": 70,
+    "take_profit_pct": 2.0, "stop_loss_pct": 1.0,
+    "max_hold_bars": 48,
+    "atr_period": 14,
+    "min_expected_move_multiple": 1.5,
+    "expected_move_atr_bars": 6
+  },
+  "risk": {
+    "max_position_pct": 50, "max_open_positions": 2,
+    "max_trades_per_day": 6, "daily_loss_limit_pct": 5,
+    "cooldown_min_after_exit": 30, "cooldown_min_after_loss": 120
+  },
+  "loop_sec": 60,
+  "publish_every_sec": 600,
+  "dashboard_port": 8955
+}
