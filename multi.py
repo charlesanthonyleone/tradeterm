@@ -258,7 +258,11 @@ def snapshot():
         con.close()
     rj = os.path.join(ROOT, "reports/research.json")
     return {"generated": time.time(), "paper_only": True, "starting_balance": START, "accounts": accts, "risk": RISK, "slippage_pct": CFG["slippage_pct"],
-            "fee_sources": A["_fee_sources"], "research": json.load(open(rj)) if os.path.exists(rj) else None}
+            "fee_sources": A["_fee_sources"], "research": json.load(open(rj)) if os.path.exists(rj) else None, "candidates": _cand_snapshot()}
+
+def _cand_snapshot():
+    try: import candidates; return candidates.snapshot()
+    except Exception: return None
 
 def write_snapshot(): json.dump(snapshot(), open(os.path.join(ROOT, "web/data.json"), "w"), default=str)
 def publish():
@@ -275,6 +279,9 @@ def run():
         for a in A["accounts"]:
             try: step_account(a, cons[a["id"]], px)
             except Exception: c = cons[a["id"]]; c.execute("insert into decisions values(?,?,?,?)", (time.time(), "-", "error", traceback.format_exc()[-400:])); c.commit()
+        try:
+            import candidates; candidates.step_all({k: v[:2] for k, v in px.items()})
+        except Exception: pass
         if time.time() - last_snap > 60: write_snapshot(); last_snap = time.time()
         if time.time() - last_pub > CFG["publish_every_sec"]:
             try: publish()
