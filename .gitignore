@@ -4,3 +4,5 @@ daemon.log
 tradeterm.pid
 web/data.json
 __pycache__/
+data/
+db/
