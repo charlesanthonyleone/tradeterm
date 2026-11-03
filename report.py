@@ -1,8 +1,11 @@
-import json, os, time, tt
+import json, os, time, multi
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
-s = tt.snapshot(); R = os.path.join(tt.ROOT, "reports")
-e = s["equity_curve"]; plt.figure(figsize=(9, 3)); plt.plot([time.strftime('%m-%d %H:%M', time.localtime(x[0])) for x in e], [x[1] for x in e]) if e else None
-plt.axhline(s["starting_balance"], color="gray", ls="--"); plt.title("tradeterm PAPER equity"); plt.xticks([]); plt.tight_layout(); plt.savefig(f"{R}/equity.png", dpi=90)
-st = s["stats"]; rows = "".join(f"<tr><td>{time.ctime(t['ts'])}</td><td>{t['pair']}</td><td>{t['side']}</td><td>{t['usd']:.4f}</td><td>{t['fee']:.4f}</td><td>{t['reason']}</td></tr>" for t in s["trades"])
-open(f"{R}/report.html", "w").write(f"<h1>tradeterm PAPER report {time.ctime()}</h1><p>Equity ${s['equity']:.4f} (start ${s['starting_balance']}) | trades {st['closed_trades']} | fees {st['fees_paid']:.4f} | gross {st['gross_pnl']:.4f} | net {st['net_pnl']:.4f}</p><img src='equity.png'><pre>{json.dumps({k:v['TOTAL'] for k,v in (s['backtest'] or {}).items()},indent=1)}</pre><table border=1>{rows}</table>")
+s = multi.snapshot(); R = os.path.join(multi.ROOT, "reports")
+plt.figure(figsize=(10, 3.5))
+for a in s["accounts"]:
+    if a["curve"]: plt.plot([x[0] for x in a["curve"]], [x[1] for x in a["curve"]], label=a["id"])
+plt.axhline(20, color="gray", ls="--"); plt.legend(fontsize=6); plt.title("tradeterm PAPER equity (all accounts)"); plt.xticks([]); plt.tight_layout(); plt.savefig(f"{R}/equity.png", dpi=90)
+rows = "".join(f"<tr><td>{k}</td><td>{v['round_trip_cost_pct']}%</td><td>{v['full_fixed_params']['trades']}</td><td>{v['full_fixed_params']['gross']}</td><td>{v['full_fixed_params']['fees']}</td><td>{v['full_fixed_params']['net']}</td><td>{v['walk_forward_oos']['trades']}</td><td>{v['walk_forward_oos']['gross']}</td><td>{v['walk_forward_oos']['net']}</td></tr>" for k, v in (s["research"] or {}).get("accounts", {}).items())
+live = "".join(f"<tr><td>{a['id']}</td><td>{a['equity']:.4f}</td><td>{a['stats']['closed']}</td><td>{a['stats']['fees']:.4f}</td><td>{a['stats']['gross']:.4f}</td><td>{a['stats']['net']:.4f}</td></tr>" for a in s["accounts"])
+open(f"{R}/report.html", "w").write(f"<h1>tradeterm PAPER report {time.ctime()}</h1><img src='equity.png'><h2>Live</h2><table border=1><tr><th>acct</th><th>equity</th><th>closed</th><th>fees</th><th>gross</th><th>net</th></tr>{live}</table><h2>Backtest 45d / walk-forward OOS</h2><table border=1><tr><th>acct</th><th>RT cost</th><th>trades</th><th>gross</th><th>fees</th><th>net</th><th>OOS trades</th><th>OOS gross</th><th>OOS net</th></tr>{rows}</table>")
 print("wrote", R)

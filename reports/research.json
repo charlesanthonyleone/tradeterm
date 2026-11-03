@@ -1,0 +1,844 @@
+{
+ "generated": 1793677869.7992117,
+ "days": 45,
+ "spread_assumed_pct": 0.02,
+ "accounts": {
+  "baseline": {
+   "full_fixed_params": {
+    "trades": 0,
+    "wins": 0,
+    "win_rate": null,
+    "gross": 0,
+    "fees": 0,
+    "net": 0.0,
+    "end_balance": 20.0,
+    "max_dd_pct": 0
+   },
+   "walk_forward_oos": {
+    "trades": 0,
+    "wins": 0,
+    "gross": 0,
+    "fees": 0,
+    "net": 0.0
+   },
+   "folds": [
+    {
+     "test_from": 1791604500,
+     "test_to": 1792209300,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 0,
+     "wins": 0,
+     "win_rate": null,
+     "gross": 0,
+     "fees": 0,
+     "net": 0.0,
+     "end_balance": 20.0,
+     "max_dd_pct": 0
+    },
+    {
+     "test_from": 1792209300,
+     "test_to": 1792814100,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 0,
+     "wins": 0,
+     "win_rate": null,
+     "gross": 0,
+     "fees": 0,
+     "net": 0.0,
+     "end_balance": 20.0,
+     "max_dd_pct": 0
+    },
+    {
+     "test_from": 1792814100,
+     "test_to": 1793418900,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 0,
+     "wins": 0,
+     "win_rate": null,
+     "gross": 0,
+     "fees": 0,
+     "net": 0.0,
+     "end_balance": 20.0,
+     "max_dd_pct": 0
+    },
+    {
+     "test_from": 1793418900,
+     "test_to": 1793677801,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 0,
+     "wins": 0,
+     "win_rate": null,
+     "gross": 0,
+     "fees": 0,
+     "net": 0.0,
+     "end_balance": 20.0,
+     "max_dd_pct": 0
+    }
+   ],
+   "round_trip_cost_pct": 1.32,
+   "fees": "spec_cb_0.4_0.6",
+   "fee_profile": {
+    "maker_pct": 0.4,
+    "taker_pct": 0.6,
+    "attainable_at_20usd": false,
+    "note": "fees from the original spec (older Coinbase tier)"
+   }
+  },
+  "ema_cb_us_maker": {
+   "full_fixed_params": {
+    "trades": 1,
+    "wins": 0,
+    "win_rate": 0.0,
+    "gross": -0.1054,
+    "fees": 0.1386,
+    "net": -0.244,
+    "end_balance": 19.756,
+    "max_dd_pct": 1.22
+   },
+   "walk_forward_oos": {
+    "trades": 0,
+    "wins": 0,
+    "gross": 0,
+    "fees": 0,
+    "net": 0.0
+   },
+   "folds": [
+    {
+     "test_from": 1791604500,
+     "test_to": 1792209300,
+     "chosen_on_train": {
+      "tp_mult": 1.5,
+      "sl_mult": 1.0
+     },
+     "trades": 0,
+     "wins": 0,
+     "win_rate": null,
+     "gross": 0,
+     "fees": 0,
+     "net": 0.0,
+     "end_balance": 20.0,
+     "max_dd_pct": 0
+    },
+    {
+     "test_from": 1792209300,
+     "test_to": 1792814100,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 0,
+     "wins": 0,
+     "win_rate": null,
+     "gross": 0,
+     "fees": 0,
+     "net": 0.0,
+     "end_balance": 20.0,
+     "max_dd_pct": 0
+    },
+    {
+     "test_from": 1792814100,
+     "test_to": 1793418900,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 0,
+     "wins": 0,
+     "win_rate": null,
+     "gross": 0,
+     "fees": 0,
+     "net": 0.0,
+     "end_balance": 20.0,
+     "max_dd_pct": 0
+    },
+    {
+     "test_from": 1793418900,
+     "test_to": 1793677801,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 0,
+     "wins": 0,
+     "win_rate": null,
+     "gross": 0,
+     "fees": 0,
+     "net": 0.0,
+     "end_balance": 20.0,
+     "max_dd_pct": 0
+    }
+   ],
+   "round_trip_cost_pct": 1.02,
+   "fees": "cb_us_entry_2026",
+   "fee_profile": {
+    "maker_pct": 0.5,
+    "taker_pct": 0.9,
+    "attainable_at_20usd": true,
+    "note": "Coinbase Advanced US entry tier, current"
+   }
+  },
+  "ema_kraken_t1_maker": {
+   "full_fixed_params": {
+    "trades": 13,
+    "wins": 9,
+    "win_rate": 69.2,
+    "gross": 1.3463,
+    "fees": 1.1851,
+    "net": 0.1612,
+    "end_balance": 20.1612,
+    "max_dd_pct": 3.81
+   },
+   "walk_forward_oos": {
+    "trades": 6,
+    "wins": 5,
+    "gross": 0.9316,
+    "fees": 0.5621,
+    "net": 0.3695
+   },
+   "folds": [
+    {
+     "test_from": 1791604500,
+     "test_to": 1792209300,
+     "chosen_on_train": {
+      "tp_mult": 1.0,
+      "sl_mult": 1.5
+     },
+     "trades": 4,
+     "wins": 3,
+     "win_rate": 75.0,
+     "gross": 0.4383,
+     "fees": 0.3598,
+     "net": 0.0785,
+     "end_balance": 20.0785,
+     "max_dd_pct": 1.9
+    },
+    {
+     "test_from": 1792209300,
+     "test_to": 1792814100,
+     "chosen_on_train": {
+      "tp_mult": 1.0,
+      "sl_mult": 0.75
+     },
+     "trades": 0,
+     "wins": 0,
+     "win_rate": null,
+     "gross": 0,
+     "fees": 0,
+     "net": 0.0,
+     "end_balance": 20.0,
+     "max_dd_pct": 0
+    },
+    {
+     "test_from": 1792814100,
+     "test_to": 1793418900,
+     "chosen_on_train": {
+      "tp_mult": 1.5,
+      "sl_mult": 0.75
+     },
+     "trades": 2,
+     "wins": 2,
+     "win_rate": 100.0,
+     "gross": 0.4933,
+     "fees": 0.2023,
+     "net": 0.291,
+     "end_balance": 20.291,
+     "max_dd_pct": 0.57
+    },
+    {
+     "test_from": 1793418900,
+     "test_to": 1793677801,
+     "chosen_on_train": {
+      "tp_mult": 1.5,
+      "sl_mult": 0.75
+     },
+     "trades": 0,
+     "wins": 0,
+     "win_rate": null,
+     "gross": 0,
+     "fees": 0,
+     "net": 0.0,
+     "end_balance": 20.0,
+     "max_dd_pct": 0
+    }
+   ],
+   "round_trip_cost_pct": 0.82,
+   "fees": "kraken_t1",
+   "fee_profile": {
+    "maker_pct": 0.4,
+    "taker_pct": 0.8,
+    "attainable_at_20usd": true,
+    "note": "Kraken Pro Tier 1, what a $20 account actually pays"
+   }
+  },
+  "ema_kraken_t3_maker": {
+   "full_fixed_params": {
+    "trades": 82,
+    "wins": 25,
+    "win_rate": 30.5,
+    "gross": 0.7081,
+    "fees": 4.2523,
+    "net": -3.5442,
+    "end_balance": 16.4558,
+    "max_dd_pct": 17.83
+   },
+   "walk_forward_oos": {
+    "trades": 44,
+    "wins": 17,
+    "gross": 1.2884,
+    "fees": 2.5043,
+    "net": -1.2158
+   },
+   "folds": [
+    {
+     "test_from": 1791604500,
+     "test_to": 1792209300,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 16,
+     "wins": 7,
+     "win_rate": 43.8,
+     "gross": 0.2392,
+     "fees": 0.8699,
+     "net": -0.6307,
+     "end_balance": 19.3693,
+     "max_dd_pct": 5.09
+    },
+    {
+     "test_from": 1792209300,
+     "test_to": 1792814100,
+     "chosen_on_train": {
+      "tp_mult": 1.5,
+      "sl_mult": 0.75
+     },
+     "trades": 14,
+     "wins": 6,
+     "win_rate": 42.9,
+     "gross": 0.7078,
+     "fees": 0.8149,
+     "net": -0.1071,
+     "end_balance": 19.8929,
+     "max_dd_pct": 3.24
+    },
+    {
+     "test_from": 1792814100,
+     "test_to": 1793418900,
+     "chosen_on_train": {
+      "tp_mult": 1.5,
+      "sl_mult": 0.75
+     },
+     "trades": 10,
+     "wins": 4,
+     "win_rate": 40.0,
+     "gross": 0.3759,
+     "fees": 0.5815,
+     "net": -0.2056,
+     "end_balance": 19.7944,
+     "max_dd_pct": 2.35
+    },
+    {
+     "test_from": 1793418900,
+     "test_to": 1793677801,
+     "chosen_on_train": {
+      "tp_mult": 1.5,
+      "sl_mult": 0.75
+     },
+     "trades": 4,
+     "wins": 0,
+     "win_rate": 0.0,
+     "gross": -0.0345,
+     "fees": 0.238,
+     "net": -0.2724,
+     "end_balance": 19.7276,
+     "max_dd_pct": 1.85
+    }
+   ],
+   "round_trip_cost_pct": 0.46,
+   "fees": "kraken_t3_aop",
+   "fee_profile": {
+    "maker_pct": 0.22,
+    "taker_pct": 0.38,
+    "attainable_at_20usd": false,
+    "note": "Kraken Tier 3; needs $10K 30d volume or $20K on platform"
+   }
+  },
+  "ema_kraken_t12_maker": {
+   "full_fixed_params": {
+    "trades": 251,
+    "wins": 80,
+    "win_rate": 31.9,
+    "gross": -3.8437,
+    "fees": 1.9884,
+    "net": -5.8321,
+    "end_balance": 14.1679,
+    "max_dd_pct": 29.27
+   },
+   "walk_forward_oos": {
+    "trades": 149,
+    "wins": 45,
+    "gross": -2.007,
+    "fees": 1.3638,
+    "net": -3.3707
+   },
+   "folds": [
+    {
+     "test_from": 1791604500,
+     "test_to": 1792209300,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 44,
+     "wins": 11,
+     "win_rate": 25.0,
+     "gross": -0.9835,
+     "fees": 0.3868,
+     "net": -1.3702,
+     "end_balance": 18.6298,
+     "max_dd_pct": 7.39
+    },
+    {
+     "test_from": 1792209300,
+     "test_to": 1792814100,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 42,
+     "wins": 14,
+     "win_rate": 33.3,
+     "gross": -0.3059,
+     "fees": 0.3724,
+     "net": -0.6783,
+     "end_balance": 19.3217,
+     "max_dd_pct": 4.0
+    },
+    {
+     "test_from": 1792814100,
+     "test_to": 1793418900,
+     "chosen_on_train": {
+      "tp_mult": 1.5,
+      "sl_mult": 0.75
+     },
+     "trades": 43,
+     "wins": 15,
+     "win_rate": 34.9,
+     "gross": -0.2991,
+     "fees": 0.4066,
+     "net": -0.7057,
+     "end_balance": 19.2943,
+     "max_dd_pct": 5.25
+    },
+    {
+     "test_from": 1793418900,
+     "test_to": 1793677801,
+     "chosen_on_train": {
+      "tp_mult": 1.0,
+      "sl_mult": 0.75
+     },
+     "trades": 20,
+     "wins": 5,
+     "win_rate": 25.0,
+     "gross": -0.4185,
+     "fees": 0.198,
+     "net": -0.6165,
+     "end_balance": 19.3835,
+     "max_dd_pct": 3.82
+    }
+   ],
+   "round_trip_cost_pct": 0.02,
+   "fees": "kraken_t12",
+   "fee_profile": {
+    "maker_pct": 0.0,
+    "taker_pct": 0.1,
+    "attainable_at_20usd": false,
+    "note": "Kraken lowest maker tier; needs $10M volume"
+   }
+  },
+  "swing_1h_cb_us": {
+   "full_fixed_params": {
+    "trades": 16,
+    "wins": 1,
+    "win_rate": 6.2,
+    "gross": -2.3327,
+    "fees": 1.9847,
+    "net": -4.3174,
+    "end_balance": 15.6826,
+    "max_dd_pct": 23.47
+   },
+   "walk_forward_oos": {
+    "trades": 11,
+    "wins": 1,
+    "gross": -1.5079,
+    "fees": 1.4591,
+    "net": -2.9669
+   },
+   "folds": [
+    {
+     "test_from": 1791604800,
+     "test_to": 1792209600,
+     "chosen_on_train": {
+      "tp_mult": 1.0,
+      "sl_mult": 0.75
+     },
+     "trades": 5,
+     "wins": 0,
+     "win_rate": 0.0,
+     "gross": -1.115,
+     "fees": 0.6673,
+     "net": -1.7823,
+     "end_balance": 18.2177,
+     "max_dd_pct": 9.57
+    },
+    {
+     "test_from": 1792209600,
+     "test_to": 1792814400,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 2,
+     "wins": 0,
+     "win_rate": 0.0,
+     "gross": -0.2742,
+     "fees": 0.2766,
+     "net": -0.5508,
+     "end_balance": 19.4492,
+     "max_dd_pct": 5.12
+    },
+    {
+     "test_from": 1792814400,
+     "test_to": 1793419200,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 2,
+     "wins": 1,
+     "win_rate": 50.0,
+     "gross": 0.218,
+     "fees": 0.2395,
+     "net": -0.0214,
+     "end_balance": 19.9786,
+     "max_dd_pct": 2.81
+    },
+    {
+     "test_from": 1793419200,
+     "test_to": 1793674801,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 0.75
+     },
+     "trades": 2,
+     "wins": 0,
+     "win_rate": 0.0,
+     "gross": -0.3367,
+     "fees": 0.2757,
+     "net": -0.6124,
+     "end_balance": 19.3876,
+     "max_dd_pct": 2.52
+    }
+   ],
+   "round_trip_cost_pct": 1.02,
+   "fees": "cb_us_entry_2026",
+   "fee_profile": {
+    "maker_pct": 0.5,
+    "taker_pct": 0.9,
+    "attainable_at_20usd": true,
+    "note": "Coinbase Advanced US entry tier, current"
+   }
+  },
+  "swing_1h_kraken_t1": {
+   "full_fixed_params": {
+    "trades": 16,
+    "wins": 1,
+    "win_rate": 6.2,
+    "gross": -2.2097,
+    "fees": 1.7175,
+    "net": -3.9272,
+    "end_balance": 16.0728,
+    "max_dd_pct": 21.73
+   },
+   "walk_forward_oos": {
+    "trades": 11,
+    "wins": 1,
+    "gross": -1.4098,
+    "fees": 1.2468,
+    "net": -2.6565
+   },
+   "folds": [
+    {
+     "test_from": 1791604800,
+     "test_to": 1792209600,
+     "chosen_on_train": {
+      "tp_mult": 1.0,
+      "sl_mult": 0.75
+     },
+     "trades": 5,
+     "wins": 0,
+     "win_rate": 0.0,
+     "gross": -1.118,
+     "fees": 0.5729,
+     "net": -1.6909,
+     "end_balance": 18.3091,
+     "max_dd_pct": 9.13
+    },
+    {
+     "test_from": 1792209600,
+     "test_to": 1792814400,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 1.0
+     },
+     "trades": 2,
+     "wins": 0,
+     "win_rate": 0.0,
+     "gross": -0.1419,
+     "fees": 0.2382,
+     "net": -0.3801,
+     "end_balance": 19.6199,
+     "max_dd_pct": 4.6
+    },
+    {
+     "test_from": 1792814400,
+     "test_to": 1793419200,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 1.0
+     },
+     "trades": 2,
+     "wins": 1,
+     "win_rate": 50.0,
+     "gross": 0.1436,
+     "fees": 0.1989,
+     "net": -0.0553,
+     "end_balance": 19.9447,
+     "max_dd_pct": 2.81
+    },
+    {
+     "test_from": 1793419200,
+     "test_to": 1793674801,
+     "chosen_on_train": {
+      "tp_mult": 0.75,
+      "sl_mult": 1.0
+     },
+     "trades": 2,
+     "wins": 0,
+     "win_rate": 0.0,
+     "gross": -0.2935,
+     "fees": 0.2368,
+     "net": -0.5302,
+     "end_balance": 19.4698,
+     "max_dd_pct": 2.52
+    }
+   ],
+   "round_trip_cost_pct": 0.82,
+   "fees": "kraken_t1",
+   "fee_profile": {
+    "maker_pct": 0.4,
+    "taker_pct": 0.8,
+    "attainable_at_20usd": true,
+    "note": "Kraken Pro Tier 1, what a $20 account actually pays"
+   }
+  },
+  "meanrev_15m_kraken_t1": {
+   "full_fixed_params": {
+    "trades": 75,
+    "wins": 13,
+    "win_rate": 17.3,
+    "gross": -1.3593,
+    "fees": 5.3121,
+    "net": -6.6714,
+    "end_balance": 13.3286,
+    "max_dd_pct": 33.65
+   },
+   "walk_forward_oos": {
+    "trades": 30,
+    "wins": 7,
+    "gross": 0.1996,
+    "fees": 2.5232,
+    "net": -2.3237
+   },
+   "folds": [
+    {
+     "test_from": 1791604800,
+     "test_to": 1792209600,
+     "chosen_on_train": {
+      "sl_mult": 0.67,
+      "rsi_buy": 25
+     },
+     "trades": 7,
+     "wins": 2,
+     "win_rate": 28.6,
+     "gross": -0.0912,
+     "fees": 0.6253,
+     "net": -0.7165,
+     "end_balance": 19.2835,
+     "max_dd_pct": 4.21
+    },
+    {
+     "test_from": 1792209600,
+     "test_to": 1792814400,
+     "chosen_on_train": {
+      "sl_mult": 1.5,
+      "rsi_buy": 25
+     },
+     "trades": 11,
+     "wins": 4,
+     "win_rate": 36.4,
+     "gross": 0.3378,
+     "fees": 0.9521,
+     "net": -0.6143,
+     "end_balance": 19.3857,
+     "max_dd_pct": 3.73
+    },
+    {
+     "test_from": 1792814400,
+     "test_to": 1793419200,
+     "chosen_on_train": {
+      "sl_mult": 1.5,
+      "rsi_buy": 25
+     },
+     "trades": 9,
+     "wins": 0,
+     "win_rate": 0.0,
+     "gross": -0.2302,
+     "fees": 0.7062,
+     "net": -0.9364,
+     "end_balance": 19.0636,
+     "max_dd_pct": 5.57
+    },
+    {
+     "test_from": 1793419200,
+     "test_to": 1793677501,
+     "chosen_on_train": {
+      "sl_mult": 1.5,
+      "rsi_buy": 25
+     },
+     "trades": 3,
+     "wins": 1,
+     "win_rate": 33.3,
+     "gross": 0.1832,
+     "fees": 0.2396,
+     "net": -0.0565,
+     "end_balance": 19.9435,
+     "max_dd_pct": 0.75
+    }
+   ],
+   "round_trip_cost_pct": 0.82,
+   "fees": "kraken_t1",
+   "fee_profile": {
+    "maker_pct": 0.4,
+    "taker_pct": 0.8,
+    "attainable_at_20usd": true,
+    "note": "Kraken Pro Tier 1, what a $20 account actually pays"
+   }
+  },
+  "meanrev_15m_cb_us": {
+   "full_fixed_params": {
+    "trades": 64,
+    "wins": 6,
+    "win_rate": 9.4,
+    "gross": -1.1104,
+    "fees": 5.6201,
+    "net": -6.7305,
+    "end_balance": 13.2695,
+    "max_dd_pct": 33.97
+   },
+   "walk_forward_oos": {
+    "trades": 26,
+    "wins": 3,
+    "gross": -0.0437,
+    "fees": 2.709,
+    "net": -2.7527
+   },
+   "folds": [
+    {
+     "test_from": 1791604800,
+     "test_to": 1792209600,
+     "chosen_on_train": {
+      "sl_mult": 0.67,
+      "rsi_buy": 25
+     },
+     "trades": 7,
+     "wins": 1,
+     "win_rate": 14.3,
+     "gross": -0.1819,
+     "fees": 0.7569,
+     "net": -0.9388,
+     "end_balance": 19.0612,
+     "max_dd_pct": 5.04
+    },
+    {
+     "test_from": 1792209600,
+     "test_to": 1792814400,
+     "chosen_on_train": {
+      "sl_mult": 1.5,
+      "rsi_buy": 25
+     },
+     "trades": 9,
+     "wins": 2,
+     "win_rate": 22.2,
+     "gross": 0.098,
+     "fees": 0.9641,
+     "net": -0.8661,
+     "end_balance": 19.1339,
+     "max_dd_pct": 4.89
+    },
+    {
+     "test_from": 1792814400,
+     "test_to": 1793419200,
+     "chosen_on_train": {
+      "sl_mult": 1.5,
+      "rsi_buy": 25
+     },
+     "trades": 8,
+     "wins": 0,
+     "win_rate": 0.0,
+     "gross": -0.0844,
+     "fees": 0.7885,
+     "net": -0.8729,
+     "end_balance": 19.1271,
+     "max_dd_pct": 5.17
+    },
+    {
+     "test_from": 1793419200,
+     "test_to": 1793677501,
+     "chosen_on_train": {
+      "sl_mult": 1.5,
+      "rsi_buy": 25
+     },
+     "trades": 2,
+     "wins": 0,
+     "win_rate": 0.0,
+     "gross": 0.1246,
+     "fees": 0.1995,
+     "net": -0.0749,
+     "end_balance": 19.9251,
+     "max_dd_pct": 0.6
+    }
+   ],
+   "round_trip_cost_pct": 1.02,
+   "fees": "cb_us_entry_2026",
+   "fee_profile": {
+    "maker_pct": 0.5,
+    "taker_pct": 0.9,
+    "attainable_at_20usd": true,
+    "note": "Coinbase Advanced US entry tier, current"
+   }
+  }
+ }
+}

@@ -1,0 +1,37 @@
+{
+  "_fee_sources": {
+    "coinbase_2026": "https://www.coinbase.com/blog/were-lowering-fees-for-many-active-traders-on-coinbase-advanced (Sep 16 2026: US entry 0.50% maker / 0.90% taker; EU/UK 0.25/0.50; other intl 0.09/0.10; VIP8 0/0.02)",
+    "kraken_pro": "https://www.kraken.com/features/fee-schedule (spot Tier1 $0+: 0.40/0.80; Tier3 $10K vol or $20K AoP: 0.22/0.38; Tier12 $10M: 0.00/0.10)",
+    "stablecoin_note": "Coinbase 0% maker stable pairs and Kraken USDG/USDe pairs are pegged assets (e.g. USDT-USDC) with ~0.01% moves; nothing to trade, so not used."
+  },
+  "fee_profiles": {
+    "spec_cb_0.4_0.6": {"maker_pct": 0.4, "taker_pct": 0.6, "attainable_at_20usd": false, "note": "fees from the original spec (older Coinbase tier)"},
+    "cb_us_entry_2026": {"maker_pct": 0.50, "taker_pct": 0.90, "attainable_at_20usd": true, "note": "Coinbase Advanced US entry tier, current"},
+    "kraken_t1": {"maker_pct": 0.40, "taker_pct": 0.80, "attainable_at_20usd": true, "note": "Kraken Pro Tier 1, what a $20 account actually pays"},
+    "kraken_t3_aop": {"maker_pct": 0.22, "taker_pct": 0.38, "attainable_at_20usd": false, "note": "Kraken Tier 3; needs $10K 30d volume or $20K on platform"},
+    "cb_intl_entry": {"maker_pct": 0.09, "taker_pct": 0.10, "attainable_at_20usd": false, "note": "Coinbase intl (Brazil/India/other) entry tier; not available to a US resident"},
+    "kraken_t12": {"maker_pct": 0.0, "taker_pct": 0.10, "attainable_at_20usd": false, "note": "Kraken lowest maker tier; needs $10M volume"}
+  },
+  "accounts": [
+    {"id": "baseline", "strategy": "ema_cross", "gran": 300, "fees": "spec_cb_0.4_0.6", "entry": "taker", "exit": "taker",
+     "p": {"fast": 9, "slow": 21, "rsi_min": 50, "rsi_max": 70, "tp": 2.0, "sl": 1.0, "max_hold": 48, "cost_mult": 1.5, "atr_bars": 6}},
+    {"id": "ema_cb_us_maker", "strategy": "ema_cross", "gran": 300, "fees": "cb_us_entry_2026", "entry": "maker", "exit": "maker",
+     "p": {"fast": 9, "slow": 21, "rsi_min": 50, "rsi_max": 70, "tp": 2.0, "sl": 1.0, "max_hold": 48, "cost_mult": 1.5, "atr_bars": 6}},
+    {"id": "ema_kraken_t1_maker", "strategy": "ema_cross", "gran": 300, "fees": "kraken_t1", "entry": "maker", "exit": "maker",
+     "p": {"fast": 9, "slow": 21, "rsi_min": 50, "rsi_max": 70, "tp": 2.0, "sl": 1.0, "max_hold": 48, "cost_mult": 1.5, "atr_bars": 6}},
+    {"id": "ema_kraken_t3_maker", "strategy": "ema_cross", "gran": 300, "fees": "kraken_t3_aop", "entry": "maker", "exit": "maker",
+     "p": {"fast": 9, "slow": 21, "rsi_min": 50, "rsi_max": 70, "tp": 2.0, "sl": 1.0, "max_hold": 48, "cost_mult": 1.5, "atr_bars": 6}},
+    {"id": "ema_kraken_t12_maker", "strategy": "ema_cross", "gran": 300, "fees": "kraken_t12", "entry": "maker", "exit": "maker",
+     "p": {"fast": 9, "slow": 21, "rsi_min": 50, "rsi_max": 70, "tp": 2.0, "sl": 1.0, "max_hold": 48, "cost_mult": 1.5, "atr_bars": 6}},
+    {"id": "swing_1h_cb_us", "strategy": "ema_cross", "gran": 3600, "fees": "cb_us_entry_2026", "entry": "maker", "exit": "maker",
+     "p": {"fast": 20, "slow": 50, "rsi_min": 50, "rsi_max": 70, "tp": 6.0, "sl": 3.0, "max_hold": 96, "cost_mult": 1.5, "atr_bars": 24}},
+    {"id": "swing_1h_kraken_t1", "strategy": "ema_cross", "gran": 3600, "fees": "kraken_t1", "entry": "maker", "exit": "maker",
+     "p": {"fast": 20, "slow": 50, "rsi_min": 50, "rsi_max": 70, "tp": 6.0, "sl": 3.0, "max_hold": 96, "cost_mult": 1.5, "atr_bars": 24}},
+    {"id": "meanrev_15m_kraken_t1", "strategy": "mean_rev", "gran": 900, "fees": "kraken_t1", "entry": "maker", "exit": "maker",
+     "p": {"rsi_buy": 30, "sma": 20, "sl": 3.0, "max_hold": 32, "min_gap_mult": 1.0}},
+    {"id": "meanrev_15m_cb_us", "strategy": "mean_rev", "gran": 900, "fees": "cb_us_entry_2026", "entry": "maker", "exit": "maker",
+     "p": {"rsi_buy": 30, "sma": 20, "sl": 3.0, "max_hold": 32, "min_gap_mult": 1.0}}
+  ],
+  "walk_forward": {"days": 45, "train_days": 21, "test_days": 7,
+    "grid": {"ema_cross": {"tp_mult": [0.75, 1.0, 1.5], "sl_mult": [0.75, 1.0, 1.5]}, "mean_rev": {"sl_mult": [0.67, 1.0, 1.5], "rsi_buy": [25, 30]}}}
+}
